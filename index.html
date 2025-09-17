@@ -1,1 +1,1011 @@
-.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática e Sustentabilidade - Colégio 24 de Outubro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis de cores atualizadas */
+        :root {
+            --verde-principal: #1B5E20;
+            --verde-secundario: #2E7D32;
+            --verde-claro: #4CAF50;
+            --verde-agua: #80CBC4;
+            --destaque: #FF9800;
+            --texto-escuro: #212121;
+            --texto-cinza: #757575;
+            --fundo-claro: #F5F5F5;
+            --branco: #FFFFFF;
+            --sombra: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Reset moderno */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--fundo-claro);
+            color: var(--texto-escuro);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Tipografia melhorada */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--verde-principal), var(--verde-claro));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--verde-secundario);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Cabeçalho moderno com glassmorphism */
+        header {
+            background: linear-gradient(120deg, var(--verde-principal), var(--verde-secundario));
+            color: var(--branco);
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .school-info {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        header h1 {
+            margin-bottom: 15px;
+            font-size: 3rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Menu Hamburger */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background: var(--verde-principal);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: var(--verde-secundario);
+            transform: scale(1.05);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background: var(--branco);
+            margin: 2px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Menu lateral */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background: var(--branco);
+            z-index: 1000;
+            padding: 70px 20px 20px;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-sidebar.active {
+            right: 0;
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--verde-principal);
+            cursor: pointer;
+        }
+
+        .menu-nav {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .menu-nav li {
+            margin-bottom: 10px;
+        }
+
+        .menu-nav a {
+            display: block;
+            padding: 12px 15px;
+            color: var(--texto-escuro);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .menu-nav a:hover {
+            background: rgba(27, 94, 32, 0.1);
+            color: var(--verde-principal);
+            transform: translateX(5px);
+        }
+
+        .menu-nav i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Seções com design moderno */
+        section {
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 16px;
+            background: var(--branco);
+            box-shadow: 0 10px 30px var(--sombra);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+        }
+
+        /* Cards de alunos melhorados */
+        .student-icons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .student-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px 15px;
+            border-radius: 16px;
+            background: var(--branco);
+            box-shadow: 0 5px 15px var(--sombra);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-icon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--verde-principal), var(--verde-claro));
+        }
+
+        .student-icon img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--verde-claro);
+            padding: 5px;
+            background-color: var(--branco);
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .student-icon span {
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--verde-principal);
+        }
+
+        .student-icon p {
+            font-size: 0.9rem;
+            color: var(--texto-cinza);
+            margin-top: 5px;
+        }
+
+        .student-icon:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .student-icon:hover img {
+            transform: scale(1.1);
+            border-color: var(--verde-principal);
+        }
+
+        /* Galeria moderna */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            padding: 25px 20px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--sombra);
+            border-left: 5px solid var(--verde-claro);
+        }
+
+        .gallery-item i {
+            font-size: 2.5rem;
+            color: var(--verde-principal);
+            margin-bottom: 15px;
+        }
+
+        .gallery-item h3 {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        .gallery-item p {
+            font-size: 1rem;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-left: 5px solid var(--destaque);
+        }
+
+        /* Exemplos matemáticos */
+        .math-example {
+            background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--verde-principal);
+        }
+
+        .math-example h3 {
+            color: var(--verde-principal);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .math-example h3 i {
+            margin-right: 10px;
+        }
+
+        /* Calculadora moderna */
+        .calculator {
+            background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .calculator h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--verde-principal);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--verde-secundario);
+        }
+
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .calculator input:focus, .calculator select:focus {
+            border-color: var(--verde-claro);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            outline: none;
+        }
+
+        .calculator button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--verde-principal), var(--verde-claro));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
+        }
+
+        .calculator button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(27, 94, 32, 0.4);
+        }
+
+        .calculator button:active {
+            transform: translateY(0);
+        }
+
+        .calculator .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--branco);
+            border-radius: 12px;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--destaque);
+        }
+
+        .calculator .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Rodapé moderno */
+        footer {
+            background: linear-gradient(135deg, var(--verde-principal), var(--verde-secundario));
+            color: var(--branco);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Responsividade melhorada */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            
+            h2 {
+                font-size: 1.9rem;
+            }
+            
+            .student-icons {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .student-icons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            section {
+                padding: 40px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .student-icons {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .menu-sidebar {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Hamburger -->
+    <div class="hamburger-menu">
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="menu-sidebar" id="menuSidebar">
+        <button class="menu-close" id="menuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 style="color: var(--verde-principal); text-align: center;">Navegação</h2>
+        <ul class="menu-nav">
+            <li><a href="#introducao"><i class="fas fa-home"></i> Introdução</a></li>
+            <li><a href="#relatorio"><i class="fas fa-file-alt"></i> Relatório</a></li>
+            <li><a href="#alunos"><i class="fas fa-users"></i> Alunos</a></li>
+            <li><a href="#importancia"><i class="fas fa-question-circle"></i> Importância</a></li>
+            <li><a href="#aplicacoes"><i class="fas fa-lightbulb"></i> Aplicações</a></li>
+            <li><a href="#exemplos"><i class="fas fa-chart-bar"></i> Exemplos</a></li>
+            <li><a href="#calculadora"><i class="fas fa-calculator"></i> Calculadora</a></li>
+            <li><a href="#conclusao"><i class="fas fa-graduation-cap"></i> Conclusão</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <div class="container header-content">
+            <div class="school-info">
+                <h3><i class="fas fa-school"></i> Colégio 24 de Outubro</h3>
+                <p><i class="far fa-calendar-alt"></i> Trabalho Escolar - Data: 16 de Outubro de 2024</p>
+            </div>
+            <h1>Matemática: Uma Aliada na Busca da Sustentabilidade</h1>
+            <p>Descubra como os números e cálculos podem ajudar a construir um futuro mais sustentável para o nosso planeta</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Introdução -->
+        <section id="introducao" class="animate-on-scroll">
+            <h2>Introdução</h2>
+            <p>Este relatório explora a relação fundamental entre a Matemática e a Sustentabilidade, demonstrando como os conceitos e ferramentas matemáticas são indispensáveis para compreender, medir e solucionar os complexos desafios ambientais e sociais do mundo contemporâneo.</p>
+            
+            <div class="img-container">
+                <img src="https://placehold.co/600x400/1B5E20/FFFFFF?text=Matemática+e+Sustentabilidade" alt="Relação entre matemática e sustentabilidade" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+            </div>
+            
+            <p>A sustentabilidade é definida como a capacidade de atender às necessidades da geração presente sem comprometer a capacidade das gerações futuras de suprirem suas próprias necessidades. Nesse contexto, a Matemática surge não apenas como uma disciplina abstrata, mas como uma linguagem universal que permite quantificar impactos, analisar dados e modelar soluções para um desenvolvimento mais equilibrado e consciente.</p>
+            
+            <p>O objetivo deste trabalho é apresentar como a Matemática, aliada à tecnologia, capacita indivíduos e comunidades a promoverem ações sustentáveis, desde pequenas mudanças de hábitos cotidianos até a criação de políticas para cidades sustentáveis.</p>
+        </section>
+
+        <!-- Relatório -->
+        <section id="relatorio" class="animate-on-scroll">
+            <h2>Relatório de Pesquisa</h2>
+            
+            <h3 style="text-align: center; margin-bottom: 25px;">Equipe de Pesquisa</h3>
+            
+            <div class="students-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Ayrá Santos</div>
+                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Rafael Quiterio</div>
+                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Daniel Gomes</div>
+                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Ibeny Viana</div>
+                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Antony Gabriel</div>
+                <div style="background: #E8F5E9; padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Wendel Bispo</div>
+            </div>
+            
+            <h3><i class="fas fa-chart-line"></i> A Matemática como Ferramenta de Conscientização e Análise</h3>
+            <p>A Matemática desempenha um papel crucial na formação de cidadãos críticos e conscientes do seu impacto no planeta. Ela oferece as ferramentas necessárias para traduzir problemas ambientais complexos em dados quantificáveis, tornando-os mais claros e permitindo intervenções mais eficazes.</p>
+            
+            <div class="math-example">
+                <h4><i class="fas fa-database"></i> Análise de Dados e Estatística</h4>
+                <p>Ferramentas estatísticas, como tabelas de frequência e gráficos, permitem coletar, organizar e interpretar dados sobre questões ambiental. Por exemplo, ao analisar o consumo de água, a produção de lixo ou o gasto de energia de uma comunidade, é possível identificar padrões de desperdício e propor metas realistas de redução.</p>
+            </div>
+            
+            <div class="math-example">
+                <h4><i class="fas fa-project-diagram"></i> Modelagem Matemática</h4>
+                <p>A criação de modelos matemáticos e equações permite simular o impacto de diferentes ações humanas sobre o meio ambiente. Um exemplo prático é o modelo HumAn and Nature DYnamical (Handy), que utiliza equações diferenciais para simular a evolução da humanity com base na exploração de recursos naturais e na desigualdade social.</p>
+            </div>
+        </section>
+
+        <!-- Alunos com ícones -->
+        <section id="alunos" class="animate-on-scroll">
+            <h2>Nossa Equipe</h2>
+            <p>Conheça os integrantes do grupo responsável por esta pesquisa:</p>
+            
+            <div class="student-icons">
+                <div class="student-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Ayrá Santos">
+                    <span>Ayrá Santos</span>
+                    <p>Pesquisa e Análise de Dados</p>
+                </div>
+                <div class="student-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Rafael Quiterio">
+                    <span>Rafael Quiterio</span>
+                    <p>Modelagem Matemática</p>
+                </div>
+                <div class="student-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Daniel Gomes">
+                    <span>Daniel Gomes</span>
+                    <p>Desenvolvimento de Conteúdo</p>
+                </div>
+                <div class="student-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Ibeny Viana">
+                    <span>Ibeny Viana</span>
+                    <p>Pesquisa Teórica</p>
+                </div>
+                <div class="student-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Antony Gabriel">
+                    <span>Antony Gabriel</span>
+                    <p>Análise Estatística</p>
+                </div>
+                <div class="student-icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Wendel Bispo">
+                    <span>Wendel Bispo</span>
+                    <p>Design e Apresentação</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Importância -->
+        <section id="importancia" class="animate-on-scroll">
+            <h2>Por que a Matemática é Importante para a Sustentabilidade?</h2>
+            <p>A matemática fornece as ferramentas necessárias para quantificar, analisar e prever fenômenos ambientais, tornando-se essencial para:</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Medição Precisas</h3>
+                    <p>Quantificar recursos naturais, consumo e desperdício com exatidão</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-search"></i>
+                    <h3>Identificação de Padrões</h3>
+                    <p>Reconhecer tendências de consumo e impacto ambiental ao longo do tempo</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Modelagem de Sistemas</h3>
+                    <p>Simular cenários e prever resultados de intervenções ambientais</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Otimização de Recursos</h3>
+                    <p>Maximizar eficiência e minimizar desperdício através de cálculos precisos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aplicações -->
+        <section id="aplicacoes" class="animate-on-scroll">
+            <h2>Aplicações da Matemática na Sustentabilidade</h2>
+            
+            <h3><i class="fas fa-graduation-cap"></i> Educação para a Sustentabilidade</h3>
+            <p>Projetos educacionais interdisciplinares que unem Matemática e Tecnologia são essenciais para formar jovens preparados para os desafios do futuro. Uma abordagem eficaz é a Aprendizagem Baseada em Projetos (PBL), onde os alunos identificam problemas reais em suas comunidades e utilizam a matemática para desenvolver soluções.</p>
+            
+            <div class="math-example">
+                <h4><i class="fas fa-list-ol"></i> Etapas do Processo</h4>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Diagnóstico:</strong> Pesquisar e coletar dados sobre um problema local</li>
+                    <li><strong>Análise:</strong> Usar planilhas para organizar e analisar os dados quantitativamente</li>
+                    <li><strong>Prototipagem:</strong> Criar protótipos digitais ou físicos de soluções</li>
+                    <li><strong>Apresentação:</strong> Comunicar os resultados com base nos dados coletados</li>
+                </ul>
+            </div>
+            
+            <h3 style="margin-top: 30px;"><i class="fas fa-city"></i> Cidades e Consumo Sustentável</h3>
+            <p>A aplicação da Matemática em projetos de sustentabilidade é vasta e pode ser observada em diversas áreas, desde a educação até a gestão de recursos em grandes centros urbanos.</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <i class="fas fa-tint"></i>
+                    <h3>Gestão de Água</h3>
+                    <p>Equações matemáticas podem modelar o consumo de água, permitindo um controle preciso</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Eficiência Energética</h3>
+                    <p>Cálculos para otimizar o consumo de energia em residências e empresas</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Gestão de Resíduos</h3>
+                    <p>Estatísticas para planejar coleta seletiva e programas de reciclagem</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-route"></i>
+                    <h3>Otimização de Rotas</h3>
+                    <p>Algoritmos para reduzir distâncias percorridas e emissões de poluentes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exemplos -->
+        <section id="exemplos" class="animate-on-scroll">
+            <h2>Exemplos Práticos</h2>
+            
+            <div class="math-example">
+                <h3><i class="fas fa-tint"></i> 1. Cálculo de Economia de Água</h3>
+                <p>Um banho de 15 minutos conserteza de 135 litros de água. Se reduzirmos para 5 minutos, economizamos 90 litros por banho. Em uma família de 4 pessoas, a economia mensal seria:</p>
+                <p><strong>4 pessoas × 90 litros × 30 dias = 10.800 litros/mês</strong></p>
+                <p>Isso demonstra como operações matemáticas básicas (multiplicação) podem ilustrar o impacto de mudanças de comportamento.</p>
+            </div>
+            
+            <div class="math-example">
+                <h3><i class="fas fa-seedling"></i> 2. Projeto de Coleta de Tampinhas</h3>
+                <p>Em um projeto escolar de coleta de tampinhas plásticas, os alunos aplicam conceitos de:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Contagem:</strong> Quantificar tampinhas coletadas</li>
+                    <li><strong>Classificação:</strong> Separar por cor, tipo de plástico</li>
+                    <li><strong>Estatística:</strong> Calcular média por aluno, projeções</li>
+                    <li><strong>Geometria:</strong> Calcular volume ocupado pelas tampinhas</li>
+                </ul>
+                <p>Essas atividades transformam abstratos conceitos matemáticos em experiências concretas e relevantes.</p>
+            </div>
+            
+            <div class="math-example">
+                <h3><i class="fas fa-solar-panel"></i> 3. Cálculo de Energia Solar</h3>
+                <p>Para dimensionar um sistema de energia solar, usamos fórmulas como:</p>
+                <p><strong>Energia necessária (kWh) = Potência dos aparelhos (W) × Tempo de uso (h) / 1000</strong></p>
+                <p>Com esse cálculo, é possível determinar quantas placas solares são necessárias para suprir o consumo de uma residência, promovendo energia limpa e sustentável.</p>
+            </div>
+        </section>
+
+        <!-- Calculadora -->
+        <section id="calculadora" class="animate-on-scroll">
+            <h2>Calculadora de Sustentabilidade</h2>
+            
+            <div class="calculator">
+                <h3><i class="fas fa-car"></i> Calculadora de Emissões de CO₂ do Transporte</h3>
+                
+                <div class="input-group">
+                    <label for="km"><i class="fas fa-road"></i> Quilômetros percorridos por mês:</label>
+                    <input type="number" id="km" placeholder="Ex: 300" min="0">
+                </div>
+                
+                <div class="input-group">
+                    <label for="consumo"><i class="fas fa-gas-pump"></i> Consumo de combustível (km/l):</label>
+                    <input type="number" id="consumo" placeholder="Ex: 12" min="0" step="0.1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="tipoCombustivel"><i class="fas fa-oil-can"></i> Tipo de combustível:</label>
+                    <select id="tipoCombustivel">
+                        <option value="0.082">Gasolina</option>
+                        <option value="0.073">Etanol</option>
+                        <option value="0.079">Diesel</option>
+                        <option value="0.0">Elétrico</option>
+                    </select>
+                </div>
+                
+                <button onclick="calcularEmissoes()"><i class="fas fa-calculator"></i> Calcular Emissões</button>
+                
+                <div id="resultado" class="result">
+                    <h4><i class="fas fa-cloud"></i> Resultado das Emissões</h4>
+                    <p id="emissaoMensal"></p>
+                    <p id="emissaoAnual"></p>
+                    <p id="equivalenciaArvores"></p>
+                    <p id="dicasReducao"></p>
+                </div>
+            </div>
+            
+            <div class="math-example">
+                <h3><i class="fas fa-info-circle"></i> Como funciona o cálculo?</h3>
+                <p>A calculadora utiliza a seguinte fórmula para determinar as emissões de CO₂:</p>
+                <p><strong>Emissões de CO₂ (kg/mês) = (Quilômetros / Consumo) × Fator de Emissão × 1000</strong></p>
+                <p>Onde:</p>
+                <ul>
+                    <li><strong>Fator de Emissão da Gasolina:</strong> 2,31 kg CO₂/litro (convertido para 0,082 kg CO₂/km)</li>
+                    <li><strong>Fator de Emissão do Etanol:</strong> 1,52 kg CO₂/litro (convertido para 0,073 kg CO₂/km)</li>
+                    <li><strong>Fator de Emissão do Diesel:</strong> 2,68 kg CO₂/litro (convertido para 0,079 kg CO₂/km)</li>
+                    <li><strong>Veículos Elétricos:</strong> Consideramos emissão zero, embora haja emissões indiretas na geração de energia</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Conclusão -->
+        <section id="conclusao" class="animate-on-scroll">
+            <h2>Conclusão</h2>
+            
+            <p>Este trabalho demonstrou como a Matemática é uma ferramenta indispensável na busca pela sustentabilidade. Através de exemplos práticos, cálculos e aplicações reais, fica evidente que os conceitos matemáticos estão intrinsecamente ligados à nossa capacidade de compreender e resolver os desafios ambientais.</p>
+            
+            <div class="math-example">
+                <h3><i class="fas fa-lightbulb"></i> Principais Conclusões</h3>
+                <ul style="margin-left: 20px;">
+                    <li>A Matemática fornece as ferramentas necessárias para quantificar e analisar problemas ambientais complexos</li>
+                    <li>Através da modelagem matemática, podemos simular cenários e prever os impactos de nossas ações</li>
+                    <li>Projetos interdisciplinares que unem Matemática e Sustentabilidade são eficazes na formação de cidadãos conscientes</li>
+                    <li>Pequenas ações individuais, quando multiplicadas, têm um impacto significativo no coletivo</li>
+                </ul>
+            </div>
+            
+            <p>Como demonstrado pela calculadora de emissões, cada um de nós pode utilizar conceitos matemáticos simples para entender e reduzir nosso impacto ambiental. A sustentabilidade não é apenas uma responsabilidade de governos e empresas, mas de cada indivíduo, e a Matemática nos fornece as ferramentas para agir de forma consciente e eficaz.</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Consciência Individual</h3>
+                    <p>Cada pessoa pode calcular e reduzir sua pegada ecológica</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Ação Coletiva</h3>
+                    <p>Comunidades podem usar dados para implementar soluções sustentáveis</p>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Impacto Global</h3>
+                    <p>Pequeñas ações locais somadas criam impactos significativos globalmente</p>
+                </div>
+            </div>
+            
+            <p>Em conclusão, a Matemática não é apenas uma disciplina acadêmica, mas uma ferramenta prática e poderosa para construirmos um futuro mais sustentável. Através dela, podemos transformar intenções em ações mensuráveis e eficazes, garantindo um planeta saudável para as gerações presentes e futuras.</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Colégio 24 de Outubro</div>
+            <p><i class="fas fa-map-marker-alt"></i> Endereço: Rua Exemplo, 123 - Cidade - Estado</p>
+            <p><i class="fas fa-envelope"></i> Email: contato@colegio24deoutubro.com</p>
+            <p><i class="fas fa-phone"></i> Telefone: (00) 0000-0000</p>
+            <p>Trabalho de Matemática - Sustentabilidade e Matemática</p>
+            <p>Desenvolvido pelos alunos do [inserir série/turma] - 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu hamburger functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuSidebar = document.getElementById('menuSidebar');
+        const menuClose = document.getElementById('menuClose');
+
+        menuToggle.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+            menuSidebar.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+            menuSidebar.classList.remove('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+            menuSidebar.classList.remove('active');
+        });
+
+        // Scroll animation
+        const scrollElements = document.querySelectorAll('.animate-on-scroll');
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add('is-visible');
+        };
+
+        const hideScrollElement = (element) => {
+            element.classList.remove('is-visible');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.2)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+
+        // Inicializar animações na carga da página
+        window.addEventListener('load', () => {
+            handleScrollAnimation();
+        });
+
+        // Função para calcular emissões de CO₂
+        function calcularEmissoes() {
+            const km = parseFloat(document.getElementById('km').value);
+            const consumo = parseFloat(document.getElementById('consumo').value);
+            const fatorEmissao = parseFloat(document.getElementById('tipoCombustivel').value);
+            
+            if (isNaN(km) || isNaN(consumo) || km <= 0 || consumo <= 0) {
+                alert("Por favor, insira valores válidos para quilômetros e consumo.");
+                return;
+            }
+            
+            // Cálculo das emissões mensais
+            const emissaoMensal = (km / consumo) * fatorEmissao;
+            
+            // Cálculo das emissões anuais
+            const emissaoAnual = emissaoMensal * 12;
+            
+            // Equivalência em árvores (cada árvore absorve aproximadamente 22 kg de CO₂ por ano)
+            const arvoresNecessarias = Math.ceil(emissaoAnual / 22);
+            
+            // Exibir resultados
+            document.getElementById('emissaoMensal').textContent = 
+                `Emissões mensais de CO₂: ${emissaoMensal.toFixed(2)} kg`;
+            
+            document.getElementById('emissaoAnual').textContent = 
+                `Emissões anuais de CO₂: ${emissaoAnual.toFixed(2)} kg`;
+            
+            document.getElementById('equivalenciaArvores').textContent = 
+                `Para compensar estas emissões, seriam necessárias aproximadamente ${arvoresNecessarias} árvores absorvendo CO₂ por um ano.`;
+            
+            // Dicas personalizadas para redução
+            let dicas = "";
+            if (emissaoMensal > 100) {
+                dicas = "💡 Dica: Considere usar transporte público, bicicleta ou caronas solidárias para reduzir significativamente suas emissões.";
+            } else if (emissaoMensal > 50) {
+                dicas = "💡 Dica: Planeje seus trajetos para fazer várias tarefas em um único percurso e mantenha seu veículo bem regulado.";
+            } else {
+                dicas = "💡 Parabéns! Suas emissões estão em um nível relativamente baixo. Continue assim!";
+            }
+            
+            document.getElementById('dicasReducao').textContent = dicas;
+            
+            // Mostrar resultados
+            document.getElementById('resultado').classList.add('show');
+        }
+    </script>
+</body>
+                  </html>
