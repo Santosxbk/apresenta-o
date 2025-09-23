@@ -3,7 +3,7 @@
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-success?logo=github&style=flat-square)](https://santosxbk.github.io/apresenta-o/)
 
 > Site do trabalho escolar **Colégio 24 de Outubro — 2º B — Outubro/2025**  
-> 🔗 [Acesse aqui](https://santosxbk.github.io/apresenta-o/)
+> 🔗 [Acesse aqui](https://santosxbk.github.io/Numeralize/)
 <img width="1148" height="254" alt="image" src="https://github.com/user-attachments/assets/0050282d-e38f-4569-a2fb-ab2387c37f88" />
 
 ---
