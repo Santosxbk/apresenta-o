@@ -163,7 +163,7 @@
             opacity: 0.9;
         }
 
-        /* Botão de alternar tema */
+        /* Botão de alternar tema - MELHORADO PARA MOBILE */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -189,7 +189,7 @@
             background: var(--azul-escuro);
         }
 
-        /* Menu Hamburger */
+        /* Menu Hamburger - MELHORADO PARA MOBILE */
         .hamburger-menu {
             position: fixed;
             top: 20px;
@@ -695,7 +695,7 @@
             margin-bottom: 20px;
         }
 
-        /* Modal Devs */
+        /* Modal Devs - CORRIGIDO */
         .modal {
             display: none;
             position: fixed;
@@ -706,6 +706,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             animation: fadeIn 0.3s ease;
+            overflow-y: auto;
         }
 
         .modal-content {
@@ -740,6 +741,7 @@
             color: var(--azul-principal);
             cursor: pointer;
             transition: color 0.3s;
+            z-index: 1002; /* Garantir que fique acima de outros elementos */
         }
 
         .dark-mode .close-modal {
@@ -872,7 +874,7 @@
             background: #333;
         }
 
-        /* Responsividade melhorada */
+        /* Responsividade melhorada - CORREÇÕES APLICADAS */
         @media (max-width: 992px) {
             h1 {
                 font-size: 2.4rem;
@@ -915,9 +917,35 @@
                 padding: 20px;
             }
 
+            /* CORREÇÃO: Posicionamento dos botões em mobile */
             .theme-toggle {
-                top: 80px;
-                left: 20px;
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .hamburger-menu {
+                top: 15px;
+                right: 15px;
+            }
+
+            .menu-toggle {
+                width: 45px;
+                height: 45px;
+            }
+
+            /* CORREÇÃO: Ajuste do menu lateral em mobile */
+            .menu-sidebar {
+                width: 280px;
+                padding: 60px 15px 15px;
+            }
+
+            /* CORREÇÃO: Ajuste do modal em mobile */
+            .modal-content {
+                margin: 5% auto;
+                width: 90%;
             }
         }
 
@@ -935,11 +963,49 @@
             }
             
             .menu-sidebar {
-                width: 280px;
+                width: 100%;
+                max-width: 280px;
             }
 
             .devs-container {
                 grid-template-columns: 1fr;
+            }
+
+            /* CORREÇÃO: Ajustes finos para telas muito pequenas */
+            .theme-toggle, .hamburger-menu {
+                position: fixed;
+                z-index: 1000;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .hamburger-menu {
+                top: 10px;
+                right: 10px;
+            }
+
+            .menu-toggle {
+                width: 40px;
+                height: 40px;
+            }
+
+            /* CORREÇÃO: Ajuste do header em telas pequenas */
+            header {
+                padding: 30px 0;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            header p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -1350,7 +1416,7 @@
         menuOverlay.addEventListener('click', toggleMenu);
         menuClose.addEventListener('click', toggleMenu);
 
-        // Modal Devs
+        // Modal Devs - CORREÇÃO APLICADA
         const devsLink = document.getElementById('devs-link');
         const devsModal = document.getElementById('devs-modal');
         const closeModal = document.querySelector('.close-modal');
@@ -1359,15 +1425,21 @@
             e.preventDefault();
             toggleMenu(); // Fecha o menu
             devsModal.style.display = 'block';
+            // Impede que o conteúdo principal seja rolável quando o modal estiver aberto
+            document.body.style.overflow = 'hidden';
         });
 
         closeModal.addEventListener('click', function() {
             devsModal.style.display = 'none';
+            // Restaura a rolagem do conteúdo principal
+            document.body.style.overflow = 'auto';
         });
 
         window.addEventListener('click', function(e) {
             if (e.target === devsModal) {
                 devsModal.style.display = 'none';
+                // Restaura a rolagem do conteúdo principal
+                document.body.style.overflow = 'auto';
             }
         });
 
