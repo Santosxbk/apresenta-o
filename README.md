@@ -4,7 +4,7 @@
 
 > Site do trabalho escolar **Colégio 24 de Outubro — 2º B — Outubro/2025**  
 > 🔗 [Acesse aqui](https://santosxbk.github.io/Numeralize/)
-<img width="1148" height="254" alt="image" src="https://github.com/user-attachments/assets/0050282d-e38f-4569-a2fb-ab2387c37f88" />
+<img width="1056" height="391" alt="image" src="https://github.com/user-attachments/assets/e1b14535-f176-4aa9-a30a-b59dffe6db23" />
 
 ---
 
