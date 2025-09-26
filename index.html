@@ -59,6 +59,10 @@
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--fundo-claro);
             color: var(--texto-escuro);
@@ -73,18 +77,18 @@
             padding: 20px;
         }
 
-        /* Tipografia melhorada */
+        /* Tipografia responsiva */
         h1, h2, h3, h4 {
             font-weight: 700;
             line-height: 1.3;
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 5vw, 3rem);
         }
 
         h2 {
-            font-size: 2.2rem;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             margin-bottom: 30px;
             position: relative;
             text-align: center;
@@ -103,20 +107,20 @@
         }
 
         h3 {
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
             color: var(--azul-escuro);
         }
 
         p {
             margin-bottom: 20px;
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
         }
 
         /* Cabeçalho moderno com glassmorphism */
         header {
             background: var(--degrade-azul);
             color: var(--branco);
-            padding: 40px 0;
+            padding: clamp(30px, 8vw, 60px) 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -148,39 +152,39 @@
             margin-bottom: 25px;
             display: inline-block;
             border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 90%;
         }
 
         header h1 {
             margin-bottom: 15px;
-            font-size: 3rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         header p {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
             max-width: 800px;
             margin: 0 auto;
             opacity: 0.9;
         }
 
-        /* Botão de alternar tema - MELHORADO PARA MOBILE */
+        /* Botão de alternar tema - TOTALMENTE RESPONSIVO */
         .theme-toggle {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: clamp(10px, 3vw, 20px);
+            left: clamp(10px, 3vw, 20px);
             z-index: 1000;
             background: var(--azul-principal);
             color: white;
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 10vw, 50px);
+            height: clamp(40px, 10vw, 50px);
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             transition: all 0.3s ease;
         }
 
@@ -189,11 +193,11 @@
             background: var(--azul-escuro);
         }
 
-        /* Menu Hamburger - MELHORADO PARA MOBILE */
+        /* Menu Hamburger - TOTALMENTE RESPONSIVO */
         .hamburger-menu {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: clamp(10px, 3vw, 20px);
+            right: clamp(10px, 3vw, 20px);
             z-index: 1000;
         }
 
@@ -202,8 +206,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 10vw, 50px);
+            height: clamp(40px, 10vw, 50px);
             background: var(--azul-principal);
             border-radius: 50%;
             cursor: pointer;
@@ -218,7 +222,7 @@
 
         .menu-toggle span {
             display: block;
-            width: 24px;
+            width: clamp(20px, 6vw, 24px);
             height: 3px;
             background: var(--branco);
             margin: 2px 0;
@@ -226,7 +230,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Menu lateral */
+        /* Menu lateral responsivo */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -248,12 +252,12 @@
         .menu-sidebar {
             position: fixed;
             top: 0;
-            right: -300px;
-            width: 300px;
+            right: -100%;
+            width: min(300px, 85vw);
             height: 100%;
             background: var(--branco);
             z-index: 1000;
-            padding: 70px 20px 20px;
+            padding: clamp(50px, 10vw, 70px) clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px);
             overflow-y: auto;
             transition: right 0.3s ease;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
@@ -271,11 +275,11 @@
 
         .menu-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: clamp(15px, 4vw, 20px);
+            right: clamp(15px, 4vw, 20px);
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 4vw, 1.5rem);
             color: var(--azul-principal);
             cursor: pointer;
         }
@@ -301,6 +305,7 @@
             border-radius: 8px;
             transition: all 0.3s ease;
             font-weight: 500;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .menu-nav a:hover {
@@ -324,9 +329,9 @@
             text-align: center;
         }
 
-        /* Seções com design moderno */
+        /* Seções com design moderno e responsivo */
         section {
-            padding: 60px 20px;
+            padding: clamp(30px, 8vw, 60px) clamp(15px, 4vw, 20px);
             margin-bottom: 30px;
             border-radius: 16px;
             background: var(--branco);
@@ -358,11 +363,11 @@
             background: linear-gradient(135deg, #1A1A1A 0%, #1E1E1E 100%);
         }
 
-        /* Cards de alunos melhorados */
+        /* Cards de alunos totalmente responsivos */
         .student-icons {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+            gap: clamp(15px, 4vw, 30px);
             margin-top: 30px;
         }
 
@@ -371,7 +376,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 20px 15px;
+            padding: clamp(15px, 4vw, 20px) clamp(10px, 3vw, 15px);
             border-radius: 16px;
             background: var(--branco);
             box-shadow: 0 5px 15px var(--sombra);
@@ -398,31 +403,21 @@
             border-radius: 2px;
         }
 
-        .student-icon img {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--azul-claro);
-            padding: 5px;
-            background-color: var(--branco);
-            transition: all 0.3s ease;
+        .student-icon i {
+            font-size: clamp(40px, 10vw, 60px);
+            color: var(--azul-principal);
             margin-bottom: 15px;
-        }
-
-        .dark-mode .student-icon img {
-            background-color: var(--bg-card-escuro);
-            border-color: var(--azul-principal);
         }
 
         .student-icon span {
             margin-top: 10px;
             font-weight: 600;
             color: var(--azul-principal);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .student-icon p {
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             color: var(--texto-claro);
             margin-top: 5px;
         }
@@ -436,22 +431,17 @@
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .student-icon:hover img {
-            transform: scale(1.1);
-            border-color: var(--azul-principal);
-        }
-
-        /* Galeria moderna */
+        /* Galeria moderna e responsiva */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(15px, 4vw, 25px);
             margin-top: 30px;
         }
 
         .gallery-item {
             background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-            padding: 25px 20px;
+            padding: clamp(15px, 4vw, 25px) clamp(10px, 3vw, 20px);
             border-radius: 16px;
             text-align: center;
             transition: all 0.3s ease;
@@ -467,14 +457,14 @@
         }
 
         .gallery-item i {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 6vw, 2.5rem);
             color: var(--azul-principal);
             margin-bottom: 15px;
         }
 
         .gallery-item h3 {
             margin-bottom: 12px;
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
             color: var(--azul-escuro);
         }
 
@@ -483,7 +473,7 @@
         }
 
         .gallery-item p {
-            font-size: 1rem;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
             margin-bottom: 0;
             color: var(--texto-claro);
         }
@@ -498,12 +488,12 @@
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
         }
 
-        /* Exemplos matemáticos */
+        /* Exemplos matemáticos responsivos */
         .math-example {
             background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
-            padding: 25px;
+            padding: clamp(15px, 4vw, 25px);
             border-radius: 12px;
-            margin: 25px 0;
+            margin: clamp(15px, 4vw, 25px) 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-left: 5px solid var(--azul-principal);
             color: var(--texto-escuro);
@@ -520,18 +510,19 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
         }
 
         .math-example h3 i {
             margin-right: 10px;
         }
 
-        /* Calculadora moderna */
+        /* Calculadora moderna e responsiva */
         .calculator {
             background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
-            padding: 30px;
+            padding: clamp(20px, 5vw, 30px);
             border-radius: 16px;
-            margin: 30px 0;
+            margin: clamp(20px, 5vw, 30px) 0;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             color: var(--texto-escuro);
         }
@@ -556,6 +547,7 @@
             margin-bottom: 8px;
             font-weight: 500;
             color: var(--azul-escuro);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .dark-mode .input-group label {
@@ -564,10 +556,10 @@
 
         .calculator input, .calculator select {
             width: 100%;
-            padding: 14px 18px;
+            padding: clamp(12px, 3vw, 14px) clamp(15px, 3vw, 18px);
             border: 2px solid #e0e0e0;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.3s ease;
             background: var(--branco);
             color: var(--texto-escuro);
@@ -588,12 +580,12 @@
 
         .calculator button {
             width: 100%;
-            padding: 16px;
+            padding: clamp(14px, 3vw, 16px);
             background: var(--degrade-azul);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -611,7 +603,7 @@
 
         .calculator .result {
             margin-top: 25px;
-            padding: 20px;
+            padding: clamp(15px, 4vw, 20px);
             background: var(--branco);
             border-radius: 12px;
             display: none;
@@ -630,7 +622,7 @@
             animation: fadeIn 0.5s ease;
         }
 
-        /* Lista de alunos */
+        /* Lista de alunos responsiva */
         .students-list div {
             background: #E3F2FD;
             padding: 15px;
@@ -638,6 +630,7 @@
             text-align: center;
             font-weight: 500;
             color: var(--azul-principal);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .dark-mode .students-list div {
@@ -669,18 +662,19 @@
             transform: translateY(0);
         }
 
-        /* Rodapé moderno */
+        /* Rodapé moderno e responsivo */
         footer {
             background: var(--degrade-azul);
             color: var(--branco);
             text-align: center;
-            padding: 40px 0;
+            padding: clamp(30px, 8vw, 40px) 0;
             margin-top: 60px;
         }
 
         footer p {
             margin: 10px 0;
             opacity: 0.9;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         footer .container {
@@ -690,12 +684,12 @@
         }
 
         .footer-logo {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             font-weight: 700;
             margin-bottom: 20px;
         }
 
-        /* Modal Devs - CORRIGIDO */
+        /* Modal Devs totalmente responsivo */
         .modal {
             display: none;
             position: fixed;
@@ -707,12 +701,13 @@
             background-color: rgba(0, 0, 0, 0.7);
             animation: fadeIn 0.3s ease;
             overflow-y: auto;
+            padding: 20px 0;
         }
 
         .modal-content {
             background-color: var(--branco);
             margin: 5% auto;
-            padding: 30px;
+            padding: clamp(20px, 5vw, 30px);
             border-radius: 16px;
             width: 90%;
             max-width: 800px;
@@ -734,14 +729,16 @@
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
+            top: clamp(10px, 3vw, 15px);
+            right: clamp(15px, 4vw, 20px);
+            font-size: clamp(1.5rem, 5vw, 2rem);
             font-weight: bold;
             color: var(--azul-principal);
             cursor: pointer;
             transition: color 0.3s;
-            z-index: 1002; /* Garantir que fique acima de outros elementos */
+            z-index: 1002;
+            background: transparent;
+            border: none;
         }
 
         .dark-mode .close-modal {
@@ -754,14 +751,14 @@
 
         .devs-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(15px, 4vw, 20px);
             margin-top: 20px;
         }
 
         .dev-card {
             background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
-            padding: 20px;
+            padding: clamp(15px, 4vw, 20px);
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -778,23 +775,21 @@
             transform: translateY(-5px);
         }
 
-        .dev-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--azul-claro);
+        .dev-card i {
+            font-size: clamp(40px, 10vw, 60px);
+            color: var(--azul-principal);
             margin-bottom: 15px;
         }
 
         .dev-card h3 {
             color: var(--azul-principal);
             margin-bottom: 5px;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
         }
 
         .dev-card p {
             color: var(--texto-claro);
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             margin-bottom: 10px;
         }
 
@@ -809,13 +804,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: clamp(30px, 8vw, 36px);
+            height: clamp(30px, 8vw, 36px);
             background: var(--azul-claro);
             color: white;
             border-radius: 50%;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
         }
 
         .dev-social a:hover {
@@ -823,22 +819,22 @@
             transform: scale(1.1);
         }
 
-        /* Tecnologias tags */
+        /* Tecnologias tags responsivas */
         .dark-mode .modal-content span {
             background: rgba(25, 118, 210, 0.2) !important;
             color: var(--azul-claro) !important;
         }
 
-        /* Estilos para a nova calculadora */
+        /* Estilos para a nova calculadora responsiva */
         .transport-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: clamp(15px, 4vw, 20px);
             margin-bottom: 20px;
         }
 
         .transport-item {
-            padding: 15px;
+            padding: clamp(12px, 3vw, 15px);
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.5);
             border: 1px solid #e0e0e0;
@@ -853,11 +849,12 @@
             background: var(--fundo-cinza);
             color: var(--texto-escuro);
             border: 1px solid #ddd;
-            padding: 10px 15px;
+            padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 15px);
             border-radius: 8px;
             cursor: pointer;
             margin-right: 10px;
             transition: all 0.3s ease;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
         }
 
         .dark-mode .btn-secondary {
@@ -874,138 +871,64 @@
             background: #333;
         }
 
-        /* Responsividade melhorada - CORREÇÕES APLICADAS */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.4rem;
+        /* Imagens responsivas */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Melhorias específicas para telas muito pequenas */
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 15px;
             }
             
-            h2 {
-                font-size: 1.9rem;
+            .menu-sidebar {
+                width: 85vw;
             }
             
             .student-icons {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            header p {
-                font-size: 1.1rem;
+                grid-template-columns: 1fr;
             }
             
             .gallery {
                 grid-template-columns: 1fr;
             }
             
-            .student-icons {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            section {
-                padding: 40px 15px;
-            }
-
-            .modal-content {
-                width: 95%;
-                margin: 10% auto;
-                padding: 20px;
-            }
-
-            /* CORREÇÃO: Posicionamento dos botões em mobile */
-            .theme-toggle {
-                top: 15px;
-                left: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
-
-            .hamburger-menu {
-                top: 15px;
-                right: 15px;
-            }
-
-            .menu-toggle {
-                width: 45px;
-                height: 45px;
-            }
-
-            /* CORREÇÃO: Ajuste do menu lateral em mobile */
-            .menu-sidebar {
-                width: 280px;
-                padding: 60px 15px 15px;
-            }
-
-            /* CORREÇÃO: Ajuste do modal em mobile */
-            .modal-content {
-                margin: 5% auto;
-                width: 90%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .student-icons {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            .menu-sidebar {
-                width: 100%;
-                max-width: 280px;
-            }
-
             .devs-container {
                 grid-template-columns: 1fr;
             }
-
-            /* CORREÇÃO: Ajustes finos para telas muito pequenas */
-            .theme-toggle, .hamburger-menu {
-                position: fixed;
-                z-index: 1000;
+            
+            .students-list {
+                grid-template-columns: 1fr;
             }
-
-            .theme-toggle {
-                top: 10px;
-                left: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            
+            .math-example ul {
+                margin-left: 15px;
             }
-
-            .hamburger-menu {
-                top: 10px;
-                right: 10px;
+            
+            .math-example li {
+                margin-bottom: 8px;
             }
+        }
 
-            .menu-toggle {
-                width: 40px;
-                height: 40px;
-            }
-
-            /* CORREÇÃO: Ajuste do header em telas pequenas */
+        /* Melhorias para orientação paisagem em dispositivos móveis */
+        @media (max-height: 500px) and (orientation: landscape) {
             header {
-                padding: 30px 0;
+                padding: 20px 0;
             }
-
-            header h1 {
-                font-size: 1.6rem;
+            
+            .menu-sidebar {
+                padding-top: 60px;
             }
-
-            header p {
-                font-size: 1rem;
+            
+            section {
+                padding: 30px 15px;
+            }
+            
+            .modal-content {
+                margin: 2% auto;
             }
         }
     </style>
@@ -1054,7 +977,7 @@
             
             <div class="devs-container">
                 <div class="dev-card">
-                    <i class="fas fa-user-graduate" style="font-size: 60px; color: var(--azul-principal); margin-bottom: 15px;"></i>
+                    <i class="fas fa-user-graduate" style="margin-bottom: 15px;"></i>
                     <h3>Ayrá Santos</h3>
                     <p>Desenvolvedor Front-end</p>
                     <div class="dev-social">
@@ -1063,7 +986,7 @@
                 </div>
                 
                 <div class="dev-card">
-                    <i class="fas fa-user-graduate" style="font-size: 60px; color: var(--azul-principal); margin-bottom: 15px;"></i>
+                    <i class="fas fa-user-graduate" style="margin-bottom: 15px;"></i>
                     <h3>Rafael Quiterio</h3>
                     <p>Desenvolvedor Front-end</p>
                 </div>
@@ -1114,7 +1037,7 @@
             
             <h3 style="text-align: center; margin-bottom: 25px;">Equipe de Pesquisa</h3>
             
-            <div class="students-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
+            <div class="students-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 15px; margin-bottom: 30px;">
                 <div style="padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Ayrá Santos</div>
                 <div style="padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Rafael Quiterio</div>
                 <div style="padding: 15px; border-radius: 10px; text-align: center; font-weight: 500;">Ibeny Viana</div>
@@ -1143,27 +1066,27 @@
             
             <div class="student-icons">
                 <div class="student-icon">
-                    <i class="fas fa-user-graduate" style="font-size: 60px; color: var(--azul-principal); margin-bottom: 15px;"></i>
+                    <i class="fas fa-user-graduate"></i>
                     <span>Ayrá Santos</span>
                     <p>Pesquisa e Análise de Dados</p>
                 </div>
                 <div class="student-icon">
-                    <i class="fas fa-user-graduate" style="font-size: 60px; color: var(--azul-principal); margin-bottom: 15px;"></i>
+                    <i class="fas fa-user-graduate"></i>
                     <span>Rafael Quiterio</span>
                     <p>Modelagem Matemática</p>
                 </div>
                 <div class="student-icon">
-                    <i class="fas fa-user-graduate" style="font-size: 60px; color: var(--azul-principal); margin-bottom: 15px;"></i>
+                    <i class="fas fa-user-graduate"></i>
                     <span>Ibeny Viana</span>
                     <p>Pesquisa Teórica</p>
                 </div>
                 <div class="student-icon">
-                    <i class="fas fa-user-graduate" style="font-size: 60px; color: var(--azul-principal); margin-bottom: 15px;"></i>
+                    <i class="fas fa-user-graduate"></i>
                     <span>Antony Gabriel</span>
                     <p>Análise Estatística</p>
                 </div>
                 <div class="student-icon">
-                    <i class="fas fa-user-graduate" style="font-size: 60px; color: var(--azul-principal); margin-bottom: 15px;"></i>
+                    <i class="fas fa-user-graduate"></i>
                     <span>Wendel Bispo</span>
                     <p>Design e Apresentação</p>
                 </div>
@@ -1410,6 +1333,13 @@
         function toggleMenu() {
             menuOverlay.classList.toggle('active');
             menuSidebar.classList.toggle('active');
+            
+            // Impedir rolagem do corpo quando o menu está aberto
+            if (menuSidebar.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
         }
 
         menuToggle.addEventListener('click', toggleMenu);
@@ -1551,6 +1481,9 @@
 
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('load', checkScroll);
+        
+        // Melhorar a experiência em dispositivos móveis
+        document.addEventListener('touchstart', function() {}, {passive: true});
     </script>
 </body>
-</html>
+            </html>
